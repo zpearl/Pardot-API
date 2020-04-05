@@ -32,13 +32,13 @@ use CyberDuck\PardotApi\Query\VisitsQuery;
 
 /**
  * PHP Wrapper for the pardot API
- * 
+ *
  * API access methods return object representations on the Pardot API object
  * / operator endpoints
- * 
+ *
  * Methods and objects that this class depend on can be easily over-ridden to
  * future proof this package against API updates
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -47,6 +47,30 @@ use CyberDuck\PardotApi\Query\VisitsQuery;
  * @version    1.0.0
  * @link       https://github.com/cyber-duck/pardot-api
  * @since      1.0.0
+ *
+ * @method AccountsQuery account()
+ * @method CampaignsQuery campaign()
+ * @method CustomFieldsQuery customField()
+ * @method CustomRedirectsQuery customRedirect()
+ * @method DynamicContentQuery dynamicContent()
+ * @method EmailClicksQuery emailClick()
+ * @method EmailQuery email()
+ * @method EmailTemplatesQuery emailTemplate()
+ * @method FormsQuery form()
+ * @method LifecycleHistoriesQuery lifecycleHistory()
+ * @method LifecycleStagesQuery lifecycleStage()
+ * @method ListMembershipsQuery listMembership()
+ * @method ListsQuery list()
+ * @method OpportunitiesQuery opportunity()
+ * @method ProspectAccountsQuery prospectAccount()
+ * @method ProspectsQuery prospect()
+ * @method TagObjectsQuery tagObject()
+ * @method TagsQuery tag()
+ * @method UsersQuery user()
+ * @method VisitorActivitiesQuery visitorActivity()
+ * @method VisitorsQuery visitor()
+ * @method VisitsQuery visit()
+ *
  */
 class PardotApi implements PardotApiInterface
 {
@@ -57,7 +81,7 @@ class PardotApi implements PardotApiInterface
      * @var int
      */
     protected $version = 4;
-    
+
     /**
      * API authenticator instance
      *
@@ -137,7 +161,7 @@ class PardotApi implements PardotApiInterface
         'visitor'            => VisitorsQuery::class,
         'visit'              => VisitsQuery::class,
     ];
-    
+
     /**
      * Sets the PardotAuthenticator instance with the passed credentials and
      * sets the API version
@@ -282,7 +306,7 @@ class PardotApi implements PardotApiInterface
             return $this->signatures[$name]::obj($this);
         }
     }
-    
+
     /**
      * Performs a query request against any API endpoint
      *
@@ -294,9 +318,9 @@ class PardotApi implements PardotApiInterface
     public function request(string $object, string $operator, array $data = [])
     {
         return Query::obj($this)
-            ->setObject($object)
-            ->setOperator($operator)
-            ->setData($data)
-            ->request($object);
+                ->setObject($object)
+                ->setOperator($operator)
+                ->setData($data)
+                ->request($object);
     }
 }

@@ -7,7 +7,7 @@ use stdClass;
 
 /**
  * JSON Formatter
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -59,6 +59,9 @@ class JsonFormatter
         }
         if(property_exists($data, 'err')) {
             throw new Exception(sprintf('Pardot API error: %s', $data->err));
+        }
+        if(property_exists($data, 'result')) {
+            $data = $data->result;
         }
         if(!property_exists($data, $this->property)) {
             throw new Exception(sprintf('Pardot API error: cannot find property %s in response', $this->property));
