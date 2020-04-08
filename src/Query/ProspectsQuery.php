@@ -30,9 +30,9 @@ class ProspectsQuery extends Query
      * required: user_key, api_key, email
      *
      * @param int $id
-     * @return stdClass|null
+     * @return stdClass|stdClass[]|null
      */
-    public function readByEmail(string $email):? \stdClass
+    public function readByEmail(string $email)
     {
         return $this->setOperator(sprintf('read/email/%s', $email))->request($this->object);
     }
